@@ -9,17 +9,17 @@ exports["default"] = void 0;
 
 var _path = _interopRequireDefault(require("path"));
 
-var parentDirFolderName = 'visual';
+var parentDirFolderName = 'cypress-visual-screenshots';
 
-var parentDir = _path["default"].join(process.cwd(), 'cypress', 'screenshots', parentDirFolderName);
+var parentDir = _path["default"].join(process.cwd(), 'cypress', parentDirFolderName);
 
-var _baseline = _path["default"].join(parentDir, 'baseline');
+var _baseline = _path["default"].join(process.cwd(), 'cypress', parentDirFolderName, 'baseline');
 
-var _comparison = _path["default"].join(parentDir, 'comparison');
+var _comparison = _path["default"].join(process.cwd(), 'cypress', parentDirFolderName, 'comparison');
 
-var _diff = _path["default"].join(parentDir, 'diff');
+var _diff = _path["default"].join(process.cwd(), 'cypress', parentDirFolderName, 'diff');
 
-var reportDir = _path["default"].join(process.cwd(), 'cypress', 'screenshots', 'report');
+var reportDir = _path["default"].join(process.cwd(), 'cypress', 'cypress-visual-report');
 
 var paths = {
   image: {
