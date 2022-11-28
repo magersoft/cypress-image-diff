@@ -1,9 +1,11 @@
 .idea
 node_modules
+.DS_Store
+
 
 # test
-cypress-visual-screenshots/comparison
-cypress-visual-screenshots/diff
+cypress/cypress-visual-screenshots/comparison
+cypress/cypress-visual-screenshots/diff
 cypress-visual-report
 cypress/videos
 cypress/fixtures

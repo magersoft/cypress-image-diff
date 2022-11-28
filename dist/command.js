@@ -2,6 +2,8 @@
 
 var _cypressRecurse = require("cypress-recurse");
 
+var _changeCase = require("change-case");
+
 var compareSnapshotCommand = function compareSnapshotCommand(defaultScreenshotOptions) {
   var height = Cypress.config('viewportHeight') || 1440;
   var width = Cypress.config('viewportWidth') || 1980; // Force screenshot resolution to keep consistency of test runs across machines
@@ -14,7 +16,8 @@ var compareSnapshotCommand = function compareSnapshotCommand(defaultScreenshotOp
     var testThreshold = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
     var recurseOptions = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
     var specName = Cypress.spec.name;
-    var testName = "".concat(specName.replace('.js', ''), "-").concat(name);
+    var specTitle = (0, _changeCase.paramCase)(Cypress.currentTest.title);
+    var testName = "".concat(specName.replace('.ts', ''), "-").concat(specTitle);
     var defaultRecurseOptions = {
       limit: 1,
       log: function log(percentage) {

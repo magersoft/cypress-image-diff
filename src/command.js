@@ -1,4 +1,5 @@
 import { recurse } from 'cypress-recurse';
+import { paramCase } from 'change-case';
 
 const compareSnapshotCommand = defaultScreenshotOptions => {
   const height = Cypress.config('viewportHeight') || 1440
@@ -13,7 +14,8 @@ const compareSnapshotCommand = defaultScreenshotOptions => {
     { prevSubject: 'optional' },
     (subject, name, testThreshold = 0, recurseOptions = {}) => {
       const specName = Cypress.spec.name
-      const testName = `${specName.replace('.js', '')}-${name}`
+      const specTitle = paramCase(Cypress.currentTest.title);
+      const testName = `${specName.replace('.ts', '')}-${specTitle}`
 
       const defaultRecurseOptions = {
         limit: 1,
@@ -43,7 +45,7 @@ const compareSnapshotCommand = defaultScreenshotOptions => {
             testName,
             testThreshold,
           }
-          
+
           return cy.task('compareSnapshotsPlugin', options)
         },
         (percentage) => percentage <= testThreshold,
