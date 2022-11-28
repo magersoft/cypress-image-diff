@@ -198,7 +198,8 @@
         padding: 1rem;
       }
       .branch > .collapse-item__header,
-      .failed-leaf > .collapse-item__header {
+      .failed-leaf > .collapse-item__header,
+      .passed-leaf > .collapse-item__header{
         cursor: pointer;
       }
       .collapse-item.leaf.failed-leaf > .collapse-item__header {
@@ -259,6 +260,9 @@
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         column-gap: 1rem;
+      }
+      .collapse-item.expanded.passed-leaf > .collapse-item__content {
+        grid-template-columns: auto;
       }
       .collapse-item.expanded.leaf > .collapse-item__content > * {
         justify-self: center;
@@ -511,6 +515,7 @@
       <div class="pseudo-wrapper">
         <div class="collapse-item leaf passed-leaf" id="$__id__">
           <div class="collapse-item__header">
+            <div class="icon arrow-right-icon"></div>
             <strong>$__title__</strong>
             <div class="spacer"></div>
             <div class="icon happy-face-icon"></div>
@@ -844,6 +849,7 @@
             failureThreshold,
             id,
           })
+          DOMBuilder.addExpansionEventListener(leaf)
           return leaf
         },
 
