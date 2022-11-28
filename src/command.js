@@ -15,7 +15,11 @@ const compareSnapshotCommand = defaultScreenshotOptions => {
     (subject, name, testThreshold = 0, recurseOptions = {}) => {
       const specName = Cypress.spec.name
       const specTitle = paramCase(Cypress.currentTest.title);
-      const testName = `${specName.replace('.ts', '')}-${name || specTitle}`
+      const testName = `${specName
+        .replace('.ts', '')
+        .replace('.cy', '')
+        .replace('.spec', '')
+        .replace('.test', '')}-${name || specTitle}`
 
       const defaultRecurseOptions = {
         limit: 1,
